@@ -25,7 +25,7 @@ export const register = async (req,res)=>{
 
         // creating a newuser in a data base 
         const newUser = await db.user.create({
-            date:{
+            data:{
                 email,
                 password:hashedPassword,
                 name,
@@ -43,7 +43,7 @@ export const register = async (req,res)=>{
             httpOnly:true,
             sameSite:"strict",
             secure:process.env.NODE_ENV !== "development",
-            maxAge:1000*60*60*24*7 // 7d
+            maxAge:1000*60*60*24*7
         } )
 
         res.status(201).json({
